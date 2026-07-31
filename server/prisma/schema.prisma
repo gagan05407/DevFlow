@@ -1,0 +1,105 @@
+// DevFlow Prisma Schema Configuration
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ----------------------------------------------------
+// Enums
+// ----------------------------------------------------
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum MemberRole {
+  OWNER
+  MEMBER
+}
+
+enum InviteStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+// ----------------------------------------------------
+// Models
+// ----------------------------------------------------
+
+model User {
+  id            Int             @id @default(autoincrement())
+  name          String
+  email         String          @unique
+  password      String?
+  googleId      String?         @unique
+  avatarUrl     String?
+  role          Role            @default(USER)
+  projects      Project[]       @relation("OwnedProjects")
+  memberships   ProjectMember[]
+  assignedTasks Task[]          @relation("AssignedTasks")
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model Project {
+  id          Int             @id @default(autoincrement())
+  title       String
+  description String?
+  githubUrl   String?
+  deadline    DateTime?
+  userId      Int
+  user        User            @relation("OwnedProjects", fields: [userId], references: [id], onDelete: Cascade)
+  members     ProjectMember[]
+  tasks       Task[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+model ProjectMember {
+  id        Int          @id @default(autoincrement())
+  projectId Int
+  project   Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId    Int
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      MemberRole   @default(MEMBER)
+  status    InviteStatus @default(PENDING)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@unique([projectId, userId])
+}
+
+model Task {
+  id               Int          @id @default(autoincrement())
+  title            String
+  description      String?
+  tag              String?      @default("Feature")
+  status           TaskStatus   @default(PENDING)
+  priority         TaskPriority @default(MEDIUM)
+  dueDate          DateTime?
+  projectId        Int
+  project          Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  assignedToUserId Int?
+  assignedTo       User?        @relation("AssignedTasks", fields: [assignedToUserId], references: [id], onDelete: SetNull)
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+}
