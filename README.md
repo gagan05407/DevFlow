@@ -85,15 +85,3 @@ cd client && npm start
 
 ---
 
-## 🐙 How to Push to GitHub
-
-Run these commands to push your codebase to GitHub:
-
-```bash
-git init
-git add .
-git commit -m "DevFlow: Full-stack Developer Productivity Platform with Google OAuth, Team Invites & Animations"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/DevFlow.git
-git push -u origin main
-```
