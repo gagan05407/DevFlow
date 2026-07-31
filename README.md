@@ -14,7 +14,7 @@ DevFlow is a full-stack **Developer Productivity Platform** designed to help sof
 
 ## 🌐 Live Production Application
 
-- **🚀 Live Application (Frontend)**: [https://dev-flow-qyo1jqa6v-gagan-b104.vercel.app](https://dev-flow-qyo1jqa6v-gagan-b104.vercel.app)
+- **🚀 Live Application (Frontend)**: [https://dev-flow-kappa-three.vercel.app](https://dev-flow-kappa-three.vercel.app)
 - **⚙️ Live REST API (Backend)**: [https://devflow-backend-9bfd.onrender.com](https://devflow-backend-9bfd.onrender.com)
 - **🗄️ Cloud Database**: Serverless PostgreSQL hosted on [Neon.tech](https://neon.tech)
 - **🐙 GitHub Repository**: [https://github.com/gagan05407/DevFlow](https://github.com/gagan05407/DevFlow)
@@ -42,7 +42,7 @@ DevFlow is a full-stack **Developer Productivity Platform** designed to help sof
 - **Animations**: Framer Motion, HTML5 Canvas 2D, Canvas-Confetti
 - **Notifications**: `react-hot-toast`
 - **OAuth**: `@react-oauth/google`
-- **Deployment**: Vercel
+- **Deployment**: Vercel (`dev-flow-kappa-three.vercel.app`)
 
 ### Backend
 - **Runtime**: Node.js & Express.js REST API
@@ -50,17 +50,17 @@ DevFlow is a full-stack **Developer Productivity Platform** designed to help sof
 - **Database Engine**: Serverless PostgreSQL (Neon)
 - **Authentication**: JWT & `google-auth-library`
 - **Environment**: `dotenv`
-- **Deployment**: Render
+- **Deployment**: Render (`devflow-backend-9bfd.onrender.com`)
 
 ---
 
 ## 🏗️ Architecture & Data Flow
 
 ```text
-[ React 18 Frontend (Vercel) ] 
+[ React 18 Frontend (https://dev-flow-kappa-three.vercel.app) ] 
        │
        ▼ Axios HTTP Client (Bearer JWT Token)
-[ Express.js REST API (Render) ]
+[ Express.js REST API (https://devflow-backend-9bfd.onrender.com) ]
        │
        ▼ Middleware (JWT Protect, RBAC Guard & Input Validation)
 [ Controllers (Auth, Project, Task, Invite, Dashboard) ]
