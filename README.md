@@ -14,10 +14,10 @@ DevFlow is a full-stack **Developer Productivity Platform** designed to help sof
 
 ## 🌐 Live Production Application
 
-- **🚀 Live Application (Frontend)**: [https://dev-flow-kappa-three.vercel.app](https://dev-flow-kappa-three.vercel.app)
-- **⚙️ Live REST API (Backend)**: [https://devflow-backend-9bfd.onrender.com](https://devflow-backend-9bfd.onrender.com)
+- **🚀 Live Application (Frontend)**: [Live Demo](https://your-frontend-url.vercel.app)
+- **⚙️ Live REST API (Backend)**: Hosted on Render
 - **🗄️ Cloud Database**: Serverless PostgreSQL hosted on [Neon.tech](https://neon.tech)
-- **🐙 GitHub Repository**: [https://github.com/gagan05407/DevFlow](https://github.com/gagan05407/DevFlow)
+- **🐙 GitHub Repository**: [Repository Link](https://github.com/your-username/DevFlow)
 
 ---
 
@@ -42,7 +42,7 @@ DevFlow is a full-stack **Developer Productivity Platform** designed to help sof
 - **Animations**: Framer Motion, HTML5 Canvas 2D, Canvas-Confetti
 - **Notifications**: `react-hot-toast`
 - **OAuth**: `@react-oauth/google`
-- **Deployment**: Vercel (`dev-flow-kappa-three.vercel.app`)
+- **Deployment**: Vercel
 
 ### Backend
 - **Runtime**: Node.js & Express.js REST API
@@ -50,17 +50,17 @@ DevFlow is a full-stack **Developer Productivity Platform** designed to help sof
 - **Database Engine**: Serverless PostgreSQL (Neon)
 - **Authentication**: JWT & `google-auth-library`
 - **Environment**: `dotenv`
-- **Deployment**: Render (`devflow-backend-9bfd.onrender.com`)
+- **Deployment**: Render
 
 ---
 
 ## 🏗️ Architecture & Data Flow
 
 ```text
-[ React 18 Frontend (https://dev-flow-kappa-three.vercel.app) ] 
+[ React 18 Frontend ]
        │
        ▼ Axios HTTP Client (Bearer JWT Token)
-[ Express.js REST API (https://devflow-backend-9bfd.onrender.com) ]
+[ Express.js REST API ]
        │
        ▼ Middleware (JWT Protect, RBAC Guard & Input Validation)
 [ Controllers (Auth, Project, Task, Invite, Dashboard) ]
@@ -75,23 +75,27 @@ DevFlow is a full-stack **Developer Productivity Platform** designed to help sof
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/gagan05407/DevFlow.git
+git clone https://github.com/your-username/DevFlow.git
 cd DevFlow
 ```
 
 ### 2. Configure Environment Variables
-- `server/.env`:
-  ```env
-  PORT=5000
-  DATABASE_URL="postgresql://neondb_owner:npg_uARF6f3ZPMkg@ep-delicate-unit-axptuo9b.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require"
-  JWT_SECRET="devflow_super_secret_jwt_key_2026"
-  GOOGLE_CLIENT_ID="688624054880-g7n8n0qf6bnl1jvcak785u6aoadle1i1.apps.googleusercontent.com"
-  ```
-- `client/.env`:
-  ```env
-  REACT_APP_API_URL="https://devflow-backend-9bfd.onrender.com/api"
-  REACT_APP_GOOGLE_CLIENT_ID="688624054880-g7n8n0qf6bnl1jvcak785u6aoadle1i1.apps.googleusercontent.com"
-  ```
+
+Create a `server/.env` file with the following keys (get values from your own Neon and Google Cloud Console dashboards — never commit real secrets):
+```env
+PORT=5000
+DATABASE_URL="your_neon_postgresql_connection_string"
+JWT_SECRET="your_own_strong_random_secret"
+GOOGLE_CLIENT_ID="your_google_oauth_client_id"
+```
+
+Create a `client/.env` file with:
+```env
+REACT_APP_API_URL="your_backend_api_url/api"
+REACT_APP_GOOGLE_CLIENT_ID="your_google_oauth_client_id"
+```
+
+> ⚠️ Add `.env` to `.gitignore` so these files are never pushed to GitHub.
 
 ### 3. Install Dependencies & Run Database Schema Sync
 ```bash
